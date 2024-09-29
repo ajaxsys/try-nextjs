@@ -19,7 +19,8 @@ const CounterComponent: React.FC<CounterComponentProps> = ({ serverCounter }) =>
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1 className='text-2xl'>Store Counter: {count}</h1>
+      {/* 注意：{count > 0 ? count : serverCounter} でSSRの際には初期値取得できるように、そうしないと一瞬で0表示される */}
+      <h1 className='text-2xl'>Store Counter: {count > 0 ? count : serverCounter}</h1>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={() => dispatch(increment())}>+ Store</button>
