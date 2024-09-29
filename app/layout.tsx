@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <StoreProvider> */}
+        {/* <StoreProvider preloadedState={{counter: { value: -1 }}}> page.tsxレベル設定するとここのstoreは意味なくなった */}
           {children}
         {/* </StoreProvider> */}
       </body>
