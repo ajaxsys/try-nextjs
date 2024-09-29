@@ -29,7 +29,7 @@ export const counterSlice = createSlice({
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
     initializeCount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+      state.value = action.payload
     },
   },
 })

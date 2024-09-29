@@ -21,8 +21,6 @@ const Counter: React.FC = () => {
         onClick={decrement}> - Decrease</button>
     </div>
   );
-
-
 }
 
 export default Counter;
