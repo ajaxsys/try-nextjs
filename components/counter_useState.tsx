@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 
 const Counter: React.FC = () => {
@@ -10,13 +12,17 @@ const Counter: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Counter: {count}</h1>
-      <button onClick={increment}>Increase</button>
-      <button onClick={decrement}>Decrease</button>
+      <h1 className='text-2xl'>Counter: {count}</h1>
+      <button
+        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
+        onClick={increment}> + Increase</button>
+      <button
+        className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-700 transition ml-4"
+        onClick={decrement}> - Decrease</button>
     </div>
   );
 
-  
+
 }
 
 export default Counter;
