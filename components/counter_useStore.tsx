@@ -1,21 +1,13 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, initializeCount } from '@/lib/features/counter/counterSlice';
+import { increment, decrement } from '@/lib/features/counter/counterSlice';
 import { RootState } from '@/lib/store';
 
-interface CounterComponentProps {
-  serverCounter: number; // Init value fetch from db
-}
-const CounterComponent: React.FC<CounterComponentProps> = ({ serverCounter }) => {
+const CounterComponent: React.FC = () => {
   const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // Client need to reset the count to serverCounter
-    dispatch(initializeCount(serverCounter));
-  }, [serverCounter, dispatch]);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>

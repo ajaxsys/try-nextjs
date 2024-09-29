@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '@/lib/features/counter/counterSlice';
 
-export const makeStore = () => {
+export const makeStore = (preloadedState = {}) => {
   return configureStore({
     reducer: {
       counter: counterReducer,
     },
+    preloadedState,
   })
 }
 

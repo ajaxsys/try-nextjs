@@ -5,16 +5,16 @@ import { makeStore, AppStore } from '../lib/store'
 // import { initializeCount } from '../lib/features/counter/counterSlice'
 
 export default function StoreProvider({
-  // count,
+  preloadedState,
   children,
 }: {
-  // count: number
+  preloadedState: any; // init store value
   children: React.ReactNode
 }) {
   const storeRef = useRef<AppStore>()
   if (!storeRef.current) {
     // Create the store instance the first time this renders
-    storeRef.current = makeStore()
+    storeRef.current = makeStore(preloadedState)
     // storeRef.current.dispatch(initializeCount(count))
   }
 

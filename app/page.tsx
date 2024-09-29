@@ -1,5 +1,6 @@
 import CounterUseState from "@/components/counter_useState";
-import CounterStore from "@/components/counter_useStore";
+import CounterUseStore from "@/components/counter_useStore";
+import StoreProvider from "./StoreProvider";
 
 async function fetchCounterFromDB(): Promise<number> {
   // MOCK
@@ -12,13 +13,14 @@ async function fetchCounterFromDB(): Promise<number> {
 
 export default async function Home() {
   const counterValue = await fetchCounterFromDB();
+  let initStore = { counter: { value: counterValue } }
 
-  return (<>
+  return (<StoreProvider preloadedState={initStore}>
     <h1 className="text-3xl">Use State example</h1>
     <CounterUseState />
     <h1 className="text-3xl">Use Store example</h1>
-    <CounterStore serverCounter={counterValue} />
-  </>
+    <CounterUseStore />
+    </StoreProvider>
   );
 }
 
