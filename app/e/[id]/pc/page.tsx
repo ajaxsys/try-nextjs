@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CounterP from "@/component/counter_parent";
+import CounterUseState from "@/components/counter_useState";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
             
             
             
-            <CounterP />
+            <CounterUseState />
 
 
 
