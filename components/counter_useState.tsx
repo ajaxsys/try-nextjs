@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 
-const Counter: React.FC = () => {
+interface CounterComponentProps {
+  serverCounter?: number; // Init value fetch from db
+}
+const CounterComponent: React.FC<CounterComponentProps> = ({ serverCounter = 0 }) => {
   // 使用 useState 钩子定义 count 状态，并设置其类型为 number
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(serverCounter);
 
   // 定义增加和减少计数的函数
   const increment = (): void => setCount(count + 1);
@@ -23,4 +26,4 @@ const Counter: React.FC = () => {
   );
 }
 
-export default Counter;
+export default CounterComponent;

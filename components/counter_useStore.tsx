@@ -9,18 +9,18 @@ interface CounterComponentProps {
   serverCounter: number; // Init value fetch from db
 }
 const CounterComponent: React.FC<CounterComponentProps> = ({ serverCounter }) => {
-  const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
 
+  // 方式１：`state.counter.value || serverCounter` でSSRの際には初期値を優先表示させるように、そうしないと一瞬で0表示される
+  const count = useSelector((state: RootState) => state.counter.value || serverCounter);
+  //        ここのuseEffectは、遅延でクライアント側のstoreに初期化することです
   useEffect(() => {
-    // Client need to reset the count to serverCounter
-    dispatch(initializeCount(serverCounter));
-  }, [serverCounter, dispatch]);
+    dispatch(initializeCount(count));
+  }, []);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      {/* 注意：{count > 0 ? count : serverCounter} でSSRの際には初期値取得できるように、そうしないと一瞬で0表示される */}
-      <h1 className='text-2xl'>Store Counter: {count > 0 ? count : serverCounter}</h1>
+      <h1 className='text-2xl'>Store Counter: {count}</h1>
       <button
         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
         onClick={() => dispatch(increment())}>+ Store</button>

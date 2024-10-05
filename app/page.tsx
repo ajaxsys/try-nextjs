@@ -1,5 +1,6 @@
 import CounterUseState from "@/components/counter_useState";
 import CounterStore from "@/components/counter_useStore";
+import CounterStoreDisplayOnly from "@/components/counter_useStoreDisplayOnly";
 
 async function fetchCounterFromDB(): Promise<number> {
   // MOCK
@@ -15,9 +16,10 @@ export default async function Home() {
 
   return (<>
     <h1 className="text-3xl">Use State example</h1>
-    <CounterUseState />
-    <h1 className="text-3xl">Use Store example</h1>
+    <CounterUseState serverCounter={counterValue} />
+    <h1 className="text-3xl">Use Store + useEffect example</h1>
     <CounterStore serverCounter={counterValue} />
+    <CounterStoreDisplayOnly />
   </>
   );
 }
